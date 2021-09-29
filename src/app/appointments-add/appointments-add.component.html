@@ -1,0 +1,30 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+    <mat-card fxFlex="500px" fxFlex.xs="100%">
+        <mat-card-title>Create appointment</mat-card-title>
+        <form [formGroup]="appointmentForm" autocomplete="off" novalidate (ngSubmit)="save()" fxLayout="column wrap"
+            fxLayoutAlign="center center" fxLayoutGap="10px">
+            <mat-card-content>
+                <mat-form-field>
+                    <input matInput formControlName="cnp" placeholder="Patient CNP">
+                    <mat-error *ngIf="hasError('cnp', 'required')">Patient CNP is required</mat-error>
+                    <mat-error *ngIf="hasError('cnp', 'minLength')">Patient CNP should be 13 digits</mat-error>
+                    <mat-error *ngIf="hasError('cnp', 'maxLength')">Patient CNP should be 13 digits</mat-error>
+                    <mat-error *ngIf="hasError('cnp', 'notexist')">There is no patient with this cnp</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput formControlName="time" [ngxTimepicker]="picker" placeholder="Appointment hour">
+                    <ngx-material-timepicker #picker></ngx-material-timepicker>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-select formControlName="services" multiple name="services">
+                        <mat-option *ngFor="let service of services" [value]="service.id"> {{service.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-card-content>
+            <mat-card-actions>
+                <button class="mat-raised-button" (click)="cancel()">Cancel</button>
+                <button class="mat-raised-button mat-primary" [disabled]="!appointmentForm.valid">Save</button>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+</section>

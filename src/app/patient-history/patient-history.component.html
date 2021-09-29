@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+
+<div>
+  <h2>Patient appointments history</h2>
+  <p><b>Name:</b> {{patient.name}}</p>
+  <p><b>CNP:</b> {{patient.cnp}}</p>
+  <p><b>Date of Birth:</b> {{patient.dateOfBirthText}}</p>
+  <p><b>Total cost:</b> {{totalCost}} RON</p>
+  <mat-accordion *ngIf="appointments.length > 0">
+    <mat-expansion-panel *ngFor="let appointment of appointments">
+      <mat-expansion-panel-header>
+        <mat-panel-title>Appointment {{appointment.dateText}} </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>Services - {{appointment.totalCost}}</p>
+      <mat-list>
+        <mat-list-item *ngFor="let service of appointment.servicesSummary">
+          {{service.name}}{{service.price ? ' - ' + service.price + 'RON' : ''}}
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <h3 *ngIf="appointments.length <= 0">
+    No Appointments so far
+  </h3>
+</div>

@@ -1,0 +1,11 @@
+table {
+  width: 95%;
+  margin-left: 30px;
+  margin-top: 50px;
+} 
+
+.add-service-btn{
+  float: right;
+  margin-top: 40px;
+  margin-right: 80px;
+}

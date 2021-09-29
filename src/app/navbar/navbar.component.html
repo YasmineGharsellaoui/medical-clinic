@@ -1,0 +1,22 @@
+<div> 
+  <mat-toolbar color="primary">
+    <div fxShow="true" fxHide.gt-sm="true">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+
+    <a mat-button class="companyName" routerLink="/">
+      <span>Medical Clinic Lakatos</span>
+    </a>
+    <span class="example-spacer"></span>
+    <div fxShow="true" fxHide.lt-md="true">
+      <a mat-button routerLink="/appointments">Appointments</a>
+      <a mat-button routerLink="/patients">Patients</a>
+      <a mat-button routerLink="/service-prices">Prices</a>
+      <a mat-button routerLink="/">Main page</a>
+    </div>
+
+  </mat-toolbar>
+
+</div>

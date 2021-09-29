@@ -1,0 +1,11 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-card fxFlex="500px" fxFlex.xs="100%">
+    <mat-card-content>
+      <p>{{message}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button class="mat-raised-button" (click)="onNoClick()">No</button>
+      <button class="mat-raised-button mat-primary" (click)="onYesClick()" cdkFocusInitial>Yes</button>
+    </mat-card-actions>
+  </mat-card>
+</section>

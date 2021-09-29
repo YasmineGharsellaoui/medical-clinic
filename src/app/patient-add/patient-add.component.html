@@ -1,0 +1,30 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+    <mat-card fxFlex="500px" fxFlex.xs="100%">
+        <mat-card-title>Add patient</mat-card-title>
+        <form [formGroup]="patientForm" autocomplete="off" novalidate fxLayout="column wrap"
+            fxLayoutAlign="center center" fxLayoutGap="10px">
+            <mat-card-content>
+                <mat-form-field>
+                    <input matInput formControlName="name" placeholder="Patient name">
+                    <mat-error *ngIf="hasError('name', 'required')">Patient name is required</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput formControlName="cnp" placeholder="Patient CNP">
+                    <mat-error *ngIf="hasError('cnp', 'required')">Patient CNP is required</mat-error>
+                    <mat-error *ngIf="hasError('cnp', 'minLength')">Patient CNP should be 13 digits</mat-error>
+                    <mat-error *ngIf="hasError('cnp', 'maxLength')">Patient CNP should be 13 digits</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [matDatepicker]="dateOfBirth" formControlName="dateOfBirth" placeholder="Patient date of birth">
+                    <mat-datepicker-toggle matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
+                    <mat-datepicker #dateOfBirth></mat-datepicker>
+                </mat-form-field>
+            </mat-card-content>
+            <mat-card-actions>
+                <button class="mat-raised-button" (click)="cancel()">Cancel</button>
+                <button class="mat-raised-button mat-primary" (click)="save()" [disabled]="!patientForm.valid">Save</button>
+            </mat-card-actions> 
+        </form>
+
+    </mat-card>
+</section>
